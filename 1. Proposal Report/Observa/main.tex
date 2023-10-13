@@ -1,0 +1,163 @@
+\documentclass[a4 paper, 12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tocloft}
+\usepackage{geometry}
+\usepackage{hyperref}
+\graphicspath{{images/}}
+
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+
+\renewcommand{\cfttoctitlefont}{\Huge}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftaftertoctitleskip}{20pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \huge
+        \textbf{Home Security}\\
+        
+        \includegraphics[width=0.8\textwidth]{Observa_1.png}\\
+        \large
+        Computer and Systems Department\\
+        Alexandria University - Faculty Of Engineering\\
+        \vspace{0.7cm}
+        \large
+        A Proposal for Human-Computer Interaction Project\\
+        \vspace{0.5cm}
+        \normalsize
+        \textbf{Prepared By}\\
+        \vspace{0.5cm}
+        \normalsize
+        
+        \begin{table}[!ht]
+            \centering
+            \begin{tabular}{l@{\hspace{7em}}r}
+                Ahmed Mustafa Elmorsy Amer  & 21010189\\
+                Ahmed Youssef Sobhy Elgoerany &  21010217\\
+                Moustafa Esam El-Sayed Amer & 21011364\\
+                Ebrahim Alaa Eldin Ebrahim & 21010017\\
+                Ahmed Ayman Ahmed Abdallah & 21010048\\
+                Ali Hassan Ali Mohamed & 21010837\\
+            \end{tabular}
+        \end{table}       
+        \vfill
+        \vspace{0.8cm}
+            
+    \end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Objective}
+The objective of \textbf{Observa} is to maintain home-security by developing a smart doorbell system. The system leverages facial recognition feature that notifies the clients whether they are familiar with this person or he is not one of their usual visitors. Streaming and observing the door-way, besides interacting with visitors remotely is an additional safety feature to ensure clients' in-home safety from burglars or undesired visitors.
+
+\section{Motivation}
+What stimulates the project is the need for more secure and convenient home security solutions. The expected outcome is the creation of a user-friendly, efficient, and effective smart doorbell system that enhances residential security. Existing systems are often expensive, difficult to install and lack advanced features such as face recognition. Besides, such systems are not applicable or available in the middle east.\\
+Our system's utility lies in providing homeowners' with real-time access to their doorstep and the ability to interact and communicate with visitors remotely, ensuring safety and convenience.\\
+It will fulfill some needs stated in the following:
+\subsection{Security}
+Regarding security needs, clients' will be notified with the person at their doorstep after labelling him, or indicating that the visitor is a stranger.
+If the visitor is unexpected or not trustworthy the user can interact with him remotely, besides the clients will be notified whenever someone is at their doorstep, so they will be protected from doorway-burglars marking them as threats.
+\subsection{Health}
+In case of quarantine or specific health constraints, the clients will utilize the remote voice-interaction. Moreover, elders will have the ease of access to visitors at their doorway.
+\subsection{Accessibility}
+Besides, being away from home will not prevent users from knowing who is at your doorstep. Clients will have full access to their real-time doorway-view, with voice-interaction features you may not miss a delivery package.
+\section{Background}
+The following are some of the key study concepts and engineering terminologies that will be addressed in the project:
+
+\begin{itemize}
+    \item Face recognition: Face recognition is a technology that automatically identifies or verifies a person from a digital image or a video frame integrating AI and ML algorithms and models to perform the task.
+    \item Cloud computing: Cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, intelligence, and more—over the Internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale.
+    \item Web development: Web development is the building, creating, and maintaining of websites. It involves using a combination of programming languages, markup languages, and scripting languages including front-end and back-end technologies.
+    \item Frameworks: Frameworks are software libraries that provide a set of pre-built components and tools that can be used to develop applications. They can help to speed up development and to reduce the amount of code that needs to be written.
+\end{itemize}
+
+\section{Approach}
+\subsection{Features}
+\begin{itemize}
+    \item Face-Recognition Model
+    \item Streaming
+    \item Voice Interaction
+    \item Web-Application
+    \item Person-recognition Notifications
+\end{itemize}
+\subsection{Workflow}
+The project will follow the \textbf{Agile} methodology with a focus on the \textbf{Scrum} framework for iterative development. Project management, documentation, and tracking will be centralized in Notion.
+
+\begin{itemize}
+    \item \textbf{Communication}: Team meetings and discussions will take place on Discord, a real-time communication platform.
+
+    \item \textbf{Design Collaboration}: System and code designs, as well as UI/UX designs, will be created and collaborated upon using Figma.
+
+    \item \textbf{Version Control}: The project's source code will be managed and controlled using GitHub, a platform for version control and collaboration.
+\end{itemize}
+
+This approach and workflow ensure effective project management, clear communication, and seamless collaboration throughout the development process.
+
+\subsection{Design}
+We will follow the project design guidelines, through prototyping and wire-frames, collecting feedback and getting the best out of user experience. Thus, enhancing the user interface environment to facilitate the application usage and setting to users.
+\subsection{Tools}
+We will require a face-recognition module, which is DeepFace to get to identify people and check whether they are labelled or not. In addition, we will interface with web, and front-end programs like Java Spring Boot and Angular.
+Instead of camera for streaming, we will use a mobile phone due to lack of resources.
+\section{Deliverables}
+
+The following deliverables are expected as outcomes of this project:
+
+\begin{enumerate}
+    \item \textbf{Report:} A comprehensive project report that documents the entire development process, from initial concept to the final implementation. This report will include details on design choices, challenges, results, and user feedback.
+
+    \item \textbf{Presentation:} A presentation summarizing the project's objectives, approach, milestones, and outcomes. This presentation will be used for project demonstrations and discussions.
+
+    \item \textbf{Code for the Web App and Mobile App:}
+        \begin{itemize}
+            \item \textbf{Web App:} The source code for the web application developed using Angular and Java Spring Boot, which includes features such as video streaming, facial recognition, UI, and user management.
+            \item \textbf{Mobile App (Bell):} The source code for the mobile app that transforms the smartphone into a doorbell camera, including video streaming capabilities and a bell.
+        \end{itemize}
+
+    \item \textbf{Instructions for Running the Web Server:} Detailed instructions on how to set up and run the web server.
+
+    \item \textbf{APK for the Web Mobile App:} A compiled APK that streams the camera to the server. This acts as the door bell.
+\end{enumerate}
+\section{References}
+The project will draw upon the following references:
+\begin{itemize}
+
+    \item \href{https://github.com/serengil/deepface}{DeepFace AI Library Documentation}
+    \item \href{https://scrumguides.org/scrum-guide.html}{Scrum Framework Guidelines}
+    \item \href{https://angular.io/docs}{Web Development with Angular}
+    \item \href{https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/}{Java Spring Boot Documentation}
+    \item \href{https://www.figma.com/}{Figma}
+    \item \href{https://notion.so}{Notion}
+\end{itemize}
+\section{Milestones}
+\subsection{Sprint 1}
+\paragraph{Minimal System \& Design}
+    Date: [21/10 - 11/11]\\
+    Develop basic video streaming and frame capture.\\
+    Integrate DeepFace for facial recognition.\\
+    Design the user interface (UI) and create wireframes for the web application. \\
+    Create a minimal website for video display.
+
+\subsection{Sprint 2}
+\paragraph{Enhanced Features}
+    Date: [11/11 - 9/12]\\
+    Implement visitor history and video storage.\\
+    Enable user notifications.\\
+    Add two-way communication with the visitor. \\
+    Implement the designed UI for the web application.
+
+\subsection{Sprint 3}
+\paragraph{Finalization}
+    Date: [9/12 - 30/12]\\
+    Update the UI based on reported user experiences and feedback. \\
+    Conduct extensive testing and quality assurance.\\
+    Optimize the system for performance and security.\\
+    Prepare the final report and presentation.
+\end{document}
