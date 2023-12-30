@@ -1,0 +1,1231 @@
+\documentclass[a4 paper, 12pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{array}
+\usepackage{tocloft}
+\usepackage{geometry}
+\usepackage{hyperref}
+\graphicspath{{images/}}
+
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+
+\renewcommand{\cfttoctitlefont}{\Huge}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftaftertoctitleskip}{20pt}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsubsecleader}{\cftdotfill{\cftdotsep}}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \huge
+        \textbf{Home Security}\\
+        
+        \includegraphics[width=0.8\textwidth]{Observa_1.png}\\
+        \large
+        Computer and Systems Department\\
+        Alexandria University - Faculty Of Engineering\\
+        \vspace{0.7cm}
+        \large
+        Final Milestone Report for Human-Computer Interaction Project\\
+        \vspace{0.5cm}
+        \normalsize
+        \textbf{Prepared By}\\
+        \vspace{0.2cm}
+        \normalsize
+        
+        \begin{table}[!ht]
+            \centering
+            \begin{tabular}{l@{\hspace{7em}}r}
+                Ahmed Mustafa Elmorsy Amer  & 21010189\\
+                Ahmed Youssef Sobhy Elgoerany &  21010217\\
+                Moustafa Esam El-Sayed Amer & 21011364\\
+                Ebrahim Alaa Eldin Ebrahim & 21010017\\
+                Ahmed Ayman Ahmed Abdallah & 21010048\\
+                Ali Hassan Ali Mohamed & 21010837\\
+            \end{tabular}
+        \end{table}       
+        \vfill
+        \vspace{0.8cm}
+            
+    \end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+\subsection{Overview and purpose of the application}
+\textbf{Observa} is a cutting-edge application designed to provide users with real-time surveillance and monitoring of the doorway to their homes. The primary purpose of the app is to enhance security and convenience for homeowners by leveraging advanced technology such as computer vision and facial recognition. Here are the key features and aspects of \textbf{Observa}:
+
+\begin{itemize}
+    \item \textbf{Live Stream Monitoring:} \textbf{Observa} offers a live stream of the doorway, allowing users to monitor activities in real time. This can be particularly useful for keeping track of visitors, deliveries, or any unexpected events.
+    
+    \item \textbf{Facial Recognition and Visitor Labeling:} The app incorporates a sophisticated facial recognition system. Users have the ability to add known visitors to a database. When a recognized person approaches the door, \textbf{Observa} labels them, providing instant information about their identity.
+    
+    \item \textbf{Historical Visitor Log:} \textbf{Observa} maintains a comprehensive log of all past visitors, complete with timestamps and identified individuals. This feature allows users to review who has visited their home over time, providing an added layer of security and awareness.
+    
+    \item \textbf{Photo Upload for Visitor Database:} Users can upload photos of their known visitors, creating a personalized contact list. This enhances the accuracy of the facial recognition system and ensures that users receive accurate and detailed information about who is at their doorstep.
+\end{itemize}
+
+\subsection{Goals And Objectives}
+The objective of \textbf{Observa} is to maintain home-security by developing a smart doorbell system. The system leverages facial recognition feature that notifies the clients whether they are familiar with this person or he is not one of their usual visitors. Streaming and observing the door-way to ensure clients' in-home safety from burglars or undesired visitors. What stimulates the project is the need for more secure and convenient home security solutions. The expected outcome is the creation of a user-friendly, efficient, and effective smart doorbell system that enhances residential security. Existing systems are often expensive, difficult to install and lack advanced features such as face recognition. Besides, such systems are not applicable or available in the middle east. Our system's utility lies in providing homeowners' with real-time access to their doorstep.\
+\subsection{Target audience}
+\begin{itemize}
+    \item \textbf{Homeowners and Families:} Observa is ideal for homeowners and families who want to enhance the security of their homes and keep track of who comes and goes. It provides peace of mind by offering real-time monitoring and historical data on visitors.
+    
+    \item \textbf{Security-Conscious Individuals:} People who prioritize security and want a reliable system to monitor their home entrance will find Observa valuable. This includes individuals living in various types of residential settings, from houses to apartments.
+    
+    \item \textbf{Busy Professionals and Parents:} Observa caters to individuals with busy lifestyles, such as professionals and parents, who may not always be physically present at home. The app allows them to stay connected and informed about activities at their doorstep, even when they are away.
+    
+    \item \textbf{Tech Enthusiasts:} Those who appreciate the integration of advanced technologies like facial recognition and real-time streaming in their daily lives may be drawn to Observa. The app combines innovation with practical utility.
+\end{itemize}
+
+\section{Key Functionalities}
+In out project, the main goal is to provide users with interactive websites that enables them access all the features they demand, based on our previous market research and interviews. All the features included in the following subsections are ones that either facilitate interaction with our environment or add functionalities to our whole program development.
+\subsection{Home Page}
+We display a home page that acts as a representative of our services to new users who would like to check the application and still not yet decided to subscribe and give it a try. It redirects users to signup or login if they are interested.
+\subsection{Sign-up}
+Users must have an account with specific minimum data in order to subscribe to our service, this data include basic information like email, name, address for later installments, date of birth and phone number. This data is essential in order to provide users credentials to use our web-application.
+\subsection{Login}
+The main feature of our project is for each user to have unique database with significant data-structures and data transfer objects, that are unified amongst all users, these transfer objects provide all users whole access to the program and the back-end implementing it.
+\subsection{Authentication}
+Since we allow multiple users login, we generate a token that differentiates a user from another, this is necessary for the access of database and all other features of the application. For instance, a user needs to be identified to the system first in order to view his stream, visitors and unique data.
+\subsection{Authorization}
+The authentication token is passed to all the routes and the back-end handles the token to verify the user, thus he is authorized to access our features, those are two key features that are established for users' safety and data security.
+\subsection{Password Hashing}
+Every user has a password, this password is not stored in the database to ensure users' security. This one-way hashing method is essential to prevent hackers and malicious users from illegal access to the database, and even if they accessed it they won't be able to either get the password, and for the reset password with the user name they will have to access the user's email and get his password in order to know his randomly generated password, before he changes it, which we encourage users to change directly after it being sent.
+\subsection{Data Change}
+All users are allowed to change their data, only ones that are changeable, to facilitate their use of the program, in case a user forgets his password or changes his phone number or demands to change his email.
+\subsection{Reset Password}
+Additionally, users are allowed to reset their password in case they have forgotten it, in order to log in to the network, if they lost their password the are not prohibited from our service.
+\subsection{Interaction With Users}
+We handle sending emails to users in order to reset their password, or to notify them when a visitor is at their doorstep. This keeps users updated to our servers and have easy access to the Observa support team.
+\subsection{Video Stream}
+We provide the users with a real time update, as much as tech holds, to their doorstep view, to see who is visiting them and watch their doorway whenever they want to or feel unsafe or warned.
+\subsection{Face Detection}
+The stream is provided with models to detect people's faces as long as they are in the range of the camera. This enhances other features that are essential for the main course of the application.
+\subsection{Visitors Recognition}
+If visitors are labelled in the user's data base they are recognized, otherwise they are saved in the database for security matters.
+\subsection{Managing Contacts}
+Contacts are the visitors labelled in the user data, each visitor saved has a saved image in order to identify him later if he is to visit us again. Users may also label unknown visitors, add other contacts to the database with labelled attributes i.e name, image and relationship to the user. They can also delete an existing contact or even update his saved data.
+\subsection{Visitors History}
+Users can see the history of their recent visitors to know, who visited them and when, in case the user was not ready to check his email or the video stream along the day. This will be very useful to hardworking people who would like to check the list of their visitors throughout the day.
+\subsection{Remember Me}
+Once users are logged in to our network, they are remembered for a while, i.e if the user refreshes the page he is still logged in and he is still authorized to his endpoints and requests.
+\subsection{Log out}
+Users are allowed to logout even if they are logged into their profiles and their session time has not ended yer, since a user might have multiple accounts if he lives in a mansion, or he does have multiple homes and wants to check for his own home safety.
+\section{Installation Guide}
+
+\subsection{Database Installation (PostgreSQL)}
+
+\textbf{1. Install PostgreSQL:}
+   \begin{itemize}
+      \item Download and install PostgreSQL from the official website: \url{https://www.postgresql.org/download/}
+   \end{itemize}
+
+\textbf{2. Create Database:}
+   \begin{itemize}
+      \item Open a PostgreSQL client (e.g., pgAdmin) and create a new database for Observa.
+   \end{itemize}
+
+
+\subsection{Backend Installation (Flask)}
+
+\textbf{1. Clone the Backend Repository:}
+   \begin{itemize}
+      \item Open your terminal and run the following command to clone the backend repository:
+         \begin{verbatim}
+         git clone https://github.com/HCI26/Observa-API.git
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{2. Change Directory:}
+   \begin{itemize}
+      \item Navigate to the cloned repository:
+         \begin{verbatim}
+         cd Observa-API
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{3. Create Python Virtual Environment:}
+   \begin{itemize}
+      \item Create a virtual environment using the following command:
+         \begin{verbatim}
+         python3 -m venv venv
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{4. Activate the Virtual Environment:}
+   \begin{itemize}
+      \item Activate the virtual environment:
+         \begin{verbatim}
+         source venv/bin/activate
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{5. Install Requirements:}
+   \begin{itemize}
+      \item Install the required Python packages using the following command:
+         \begin{verbatim}
+         pip install -r requirements.txt
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{6. Open VSCode:}
+   \begin{itemize}
+      \item Open Visual Studio Code (VSCode) in the current folder:
+         \begin{verbatim}
+         code .
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{7. Run the Server:}
+   \begin{itemize}
+      \item Run the server using the launch.json configuration file in VSCode:
+         \begin{itemize}
+            \item Press F5 or click on the "Run" icon in the Activity Bar on the side and then click "Start Debugging."
+         \end{itemize}
+   \end{itemize}
+
+\subsection{Frontend Installation (Vue.js)}
+
+\textbf{1. Clone the Frontend Repository:}
+   \begin{itemize}
+      \item Open your terminal and run the following command to clone the frontend repository:
+         \begin{verbatim}
+         git clone https://github.com/HCI26/Front-end.git
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{2. Change Directory:}
+   \begin{itemize}
+      \item Navigate to the cloned repository:
+         \begin{verbatim}
+         cd Front-end
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{3. Install Node.js and npm:}
+   \begin{itemize}
+      \item Ensure you have Node.js and npm installed. You can download them from \url{https://nodejs.org/}
+   \end{itemize}
+
+\textbf{4. Install Dependencies:}
+   \begin{itemize}
+      \item Install project dependencies using the following command:
+         \begin{verbatim}
+         npm install
+         \end{verbatim}
+   \end{itemize}
+
+\textbf{5. Run the Frontend:}
+   \begin{itemize}
+      \item Start the Vue.js development server:
+         \begin{verbatim}
+         npm run serve
+         \end{verbatim}
+      \item Open your web browser and go to the provided URL (usually \url{http://localhost:8080/}) to view the Observa frontend.
+   \end{itemize}
+
+\textbf{Congratulations!} You have successfully installed Observa. If you encounter any issues, refer to the documentation or seek assistance from the \href{https://github.com/HCI26}{Observa community}.
+
+\section{User Manual}
+
+\subsection{Home Page}
+
+The home page provides information about the application and its features.
+
+\subsection{Sign Up}
+
+\begin{enumerate}
+  \item If you are not registered, click on the ``Sign Up'' button.
+  \item Fill in the required user details, including username, password, and any additional information.
+  \item Wait for the system to authenticate and authorize your registration.
+\end{enumerate}
+
+\subsection{Login}
+
+\begin{enumerate}
+  \item If you are already registered, click on the ``Login'' button.
+  \item Enter your username and password.
+  \item Wait for the server to authenticate your login request.
+\end{enumerate}
+
+\subsection{Dashboard}
+
+\begin{enumerate}
+  \item Upon successful login, you will be directed to the dashboard.
+  \item The dashboard provides a live stream of your doorway with real-time face recognition, detection, and labeling of visitors.
+  \item You can log out at any time using the logout option.
+\end{enumerate}
+
+\subsection{Visitor Pages}
+
+Access the ``Visitor'' section to manage your list of visitors.
+
+\subsubsection{Add a New Visitor}
+
+\begin{enumerate}
+  \item Specify the visitor's details and relationship.
+  \item Add a photo for recognition, which will be saved in the visitors' database.
+\end{enumerate}
+
+\subsubsection{View All Visitors}
+
+\begin{enumerate}
+  \item Check the list of all your recognized visitors with their last visit date.
+  \item Edit or delete visitor details as needed.
+\end{enumerate}
+
+\subsection{Visitor History}
+
+\begin{enumerate}
+  \item Navigate to the ``Visitor History'' page.
+  \item Access a detailed history of all days and their corresponding visitors.
+\end{enumerate}
+
+\subsection{Settings}
+
+Explore the ``Settings'' page.
+
+\subsubsection{Edit User Details}
+
+\begin{enumerate}
+  \item Modify your personal information as needed.
+\end{enumerate}
+
+\newpage
+\section{Architecture Overview}
+\begin{enumerate}
+    \item \textbf{High-Level Architecture Diagram:}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\textwidth]{images/Architecture Diagram.png}
+  \caption{High-Level Architecture Diagram}
+  \label{fig:your_image}
+\end{figure}
+    \item \textbf{Layers:}
+        \begin{itemize}
+            \item \textbf{Presentation Layer:}
+                \begin{itemize}
+                    \item User Interface (UI): The front-end interface where users interact with the application.
+                    \item Live Stream Display: Displays the live stream from the doorway.
+                    \item Visitor History Interface: Provides access to historical visitor logs.
+                    \item Authentication Module: Handles user login/sign-in and ensures secure access.
+                \end{itemize}
+            
+            \item \textbf{Application Layer:}
+                \begin{itemize}
+                    \item Live Stream Module:
+                        \begin{itemize}
+                            \item Interfaces with the device camera for real-time streaming.
+                            \item Sends the live stream to the facial recognition module.
+                        \end{itemize}
+                    \item Facial Recognition Module:
+                        \begin{itemize}
+                            \item Utilizes the Deep Face package model for facial recognition.
+                            \item Matches detected faces with the database of known visitors.
+                            \item Labels and identifies recognized visitors.
+                        \end{itemize}
+                    \item Visitor Database:
+                        \begin{itemize}
+                            \item Stores information about known visitors, including photos and labels.
+                            \item Supports CRUD operations for managing visitor data.
+                            \item SQLAlchemy provides an abstraction layer that enables you to interact with the PostgreSQL database using Pythonic syntax.
+                        \end{itemize}
+                    \item User Database:
+                        \begin{itemize}
+                            \item Stores user information, including login credentials.
+                            \item Manages user authentication and authorization.
+                            \item SQLAlchemy facilitates CRUD operations for managing user data.
+                        \end{itemize}
+                    \item SQLAlchemy Integration: \begin{itemize}
+                    \item The use of SQLAlchemy in this layer allows you to define database models as Python classes and perform operations like querying, inserting, updating, and deleting records using high-level Python functions.
+                    \end{itemize}
+                \end{itemize}
+            
+            \item \textbf{Data Access Layer:}
+                \begin{itemize}
+                    \item Database Management System (DBMS):
+                        \begin{itemize}
+                            \item Manages and stores data securely.
+                            \item Supports efficient retrieval of historical visitor logs and user information. \item PostgreSQL is the chosen DBMS, responsible for managing and storing data securely.
+                        \end{itemize}
+
+                    \item Database migrations using alembic: Easily make alterations in the class structure and apply them to the db with ability to revert changes, too.
+                \end{itemize}
+            
+            \item \textbf{Security Layer:}
+                \begin{itemize}
+                    \item Authentication and Authorization:
+                        \begin{itemize}
+                            \item Validates user credentials during login.
+                            \item Ensures that only authorized users can access certain features.
+                        \end{itemize}
+                \end{itemize}
+            
+            \item \textbf{Integration Layer:}
+                \begin{itemize}
+                    \item Integration with Deep Face Package:
+                        \begin{itemize}
+                            \item Connects the facial recognition module with the Deep Face package.
+                            \item Facilitates seamless integration of advanced facial recognition capabilities.
+                        \end{itemize}
+                \end{itemize}
+            
+            \item \textbf{Communication Layer:}
+                \begin{itemize}
+                    \item APIs (Application Programming Interfaces):
+                        \begin{itemize}
+                            \item Facilitates communication between different modules and layers.
+                            \item Enables data exchange between the front-end and back-end components.
+                        \end{itemize}
+                \end{itemize}
+        \end{itemize}
+
+    \item \textbf{Interactions:}
+        \begin{itemize}
+            \item \textbf{User Authentication:}
+                \begin{itemize}
+                    \item The Authentication Module verifies user credentials against the User Database.
+                    \item Authenticated users gain access to the Live Stream Display and Visitor History Interface.
+                \end{itemize}
+            
+            \item \textbf{Live Stream Monitoring:}
+                \begin{itemize}
+                    \item Live Stream Module captures the real-time video feed.
+                    \item The facial recognition module analyzes the stream for recognized faces.
+                \end{itemize}
+            
+            \item \textbf{Facial Recognition and Face Detection:}
+                \begin{itemize}
+                    \item Facial Recognition Module utilizes the Deep Face package to recognize faces.
+                    \item Matches detected faces with known visitors in the Visitor Database.
+                    \item Labels and identifies recognized visitors.
+                    \item The face detection module (RetinaFace) identifies faces in the live stream. RetinaFace is mainly based on an academic study: \href{https://arxiv.org/pdf/1905.00641.pdf}{RetinaFace: Single-stage Dense Face Localisation in the Wild}.
+
+                    \item Detected faces are passed to the face recognition module (VGG-Face) for identification against the visitor database.   
+                    \\ The structure of the VGG-Face model is demonstrated below. 
+                    \\ \includegraphics[width=0.7\textwidth]{vgg-face-model.png}
+                    \\ \includegraphics[width=0.7\textwidth]{vgg-face-architecture.png}
+                    
+                \end{itemize}
+
+            \begin{table}[ht]
+    \centering
+    \caption{Face Recognition Model Performance}
+    \label{tab:face_recognition}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Model} & \textbf{LFW Score (\%)} & \textbf{YTF Score (\%)} \\
+        \midrule
+        Facenet512 & 99.65 & - \\
+        SFace & 99.60 & - \\
+        ArcFace & 99.41 & - \\
+        Dlib & 99.38 & - \\
+        Facenet & 99.20 & - \\
+        VGG-Face & 98.78 & 97.40 \\
+        Human-beings & 97.53 & - \\
+        OpenFace & 93.80 & - \\
+        DeepID & - & 97.05 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+            
+                \end{itemize}
+            
+            \item \textbf{Data Storage and Retrieval:}
+                \begin{itemize}
+                    \item Visitor and user data are stored securely in their respective databases.
+                    \item Historical visitor logs are retrieved from the Visitor Database for display in the Visitor History Interface.
+                \end{itemize}
+            
+            \item \textbf{Authentication and Authorization:}
+                \begin{itemize}
+                    \item The Security Layer ensures that only authenticated and authorized users can access sensitive features.
+                \end{itemize}
+\end{enumerate}
+\section{API Documentation and Endpoints Details}
+
+\subsection{List User's Visitor}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint provides a list of visitors for the current logged-in user. It supports the HTTP GET method and returns a list of \texttt{Visitor DTOs} representing the visitors.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/user/visitors/get}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with valid user credentials.
+  \end{itemize}
+  \item \textbf{Request Body:} The request for this endpoint is expected to be a simple GET request without a request body.
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server returns a list of \texttt{Visitor DTOs}.
+    \item \textbf{Response Body Data Types:} Visitor ID is integer representing the ID of the visitor, Visitor name is String representing the name of the visitor, Last visit stores the epoch time of the last visit.
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "visitors": [
+        {
+          "visitor_id": 1,
+          "visitor_name": "John Doe",
+          "last_visit": 1419086327
+        },
+        {
+          "visitor_id": 2,
+          "visitor_name": "Jane Doe",
+          "last_visit": 1330650156
+        }
+      ]
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{enumerate}
+    \item \textbf{404 Not Found:}
+    \begin{itemize}
+      \item \textbf{Description:} The user was not found or no visitors were found for the current logged-in user.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Not Found",
+        "message": "User not found or no visitors found for the current user."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The request is missing valid authentication credentials or the provided credentials are invalid.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Authentication credentials are missing or invalid."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{400 Bad Request:}
+    \begin{itemize}
+      \item \textbf{Description:} The request is malformed or contains invalid parameters.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Bad Request",
+        "message": "Invalid parameters in the request."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{enumerate}
+
+  \item \textbf{Examples:}
+  \begin{enumerate}
+    \item \textbf{Request Example:}
+    \begin{itemize}
+      \item \textbf{URL:} \texttt{https://URL/api/user/visitors/get}
+      \item \textbf{Method:} \texttt{GET}
+    \end{itemize}
+
+    \item \textbf{Successful Response Example (200 OK):}
+    \begin{verbatim}
+    {
+      "visitors": [
+        {
+          "visitor_id": 1,
+          "visitor_name": "John Doe",
+          "last_visit": 1330650156
+        },
+        {
+          "visitor_id": 2,
+          "visitor_name": "Jane Doe",
+          "last_visit": 1419086327
+        }
+      ]
+    }
+    \end{verbatim}
+
+    \item \textbf{Error Response Example (404 Not Found):}
+    \begin{verbatim}
+    {
+      "error": "Not Found",
+      "message": "User not found or no visitors found for the current user."
+    }
+    \end{verbatim}
+
+    \item \textbf{Error Response Example (401 Unauthorized):}
+    \begin{verbatim}
+    {
+      "error": "Unauthorized",
+      "message": "Authentication credentials are missing or invalid."
+    }
+    \end{verbatim}
+
+    \item \textbf{Error Response Example (400 Bad Request):}
+    \begin{verbatim}
+    {
+      "error": "Bad Request",
+      "message": "Invalid parameters in the request."
+    }
+    \end{verbatim}
+  \end{enumerate}
+
+\end{enumerate}
+\subsection{Get User Information}
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint retrieves the information of the current logged-in user. It supports the HTTP GET method and returns a list of User DTOs representing the user's information. If the user is not found, it returns a 404 error code.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/user/info/get}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with valid user credentials.
+  \end{itemize}
+  \item \textbf{Request Body:} The request for this endpoint is expected to be a simple GET request without a request body.
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server returns a list of User DTOs containing the information of the current logged-in user.
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item User DTO:
+      \begin{itemize}
+        \item \texttt{user\_id} (int): User ID
+        \item \texttt{username} (str): Username
+        \item \texttt{email} (str): Email address
+        \item \texttt{full\_name} (str): Full name
+        % Additional fields as needed
+      \end{itemize}
+    \end{itemize}
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "users": [
+        {
+          "user_id": 1,
+          "username": "john_doe",
+          "email": "john.doe@example.com",
+          "full_name": "John Doe"
+        }
+      ]
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{enumerate}
+    \item \textbf{404 Not Found:}
+    \begin{itemize}
+      \item \textbf{Description:} The user was not found.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Not Found",
+        "message": "User not found."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The request is missing valid authentication credentials or the provided credentials are invalid.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Authentication credentials are missing or invalid."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{400 Bad Request:}
+    \begin{itemize}
+      \item \textbf{Description:} The request is malformed or contains invalid parameters.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Bad Request",
+        "message": "Invalid parameters in the request."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{enumerate}
+\end{enumerate}
+\subsection{Add Visitor Endpoint}
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint adds visitors. It supports the HTTP POST method and takes a request body containing a \texttt{VisitorDTO} and an image file of the person. The server returns a 400 error code if the deepface model does not detect any face; otherwise, it is executed successfully. An image file is saved in the "datasets" folder, and the path to it is returned as a string.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/add\_visitor}
+    \item \textbf{Method:} \texttt{POST}
+  \end{itemize}
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with valid user credentials.
+  \end{itemize}
+  \item \textbf{Request Body:}
+  \begin{itemize}
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{VisitorDTO} (object): Visitor data transfer object.
+        \begin{itemize}
+          \item \texttt{id} (int): Visitor ID.
+          \item \texttt{name} (str): Visitor's name.
+          \item \texttt{relation} (str): Relation to the user.
+          \item \texttt{date} (str): Date of the visit.
+        \end{itemize}
+      \item \texttt{image} (file): Image file of the person.
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server adds the visitor. An image file is saved in the "datasets" folder, and the path to it is returned as a string.
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{image\_path} (str): Path to the saved image file.
+    \end{itemize}
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "image_path": "/datasets/visitor_images/visitor123.jpg"
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{400 Bad Request:}
+    \begin{itemize}
+      \item \textbf{Description:} The deepface model did not detect any face in the provided image.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Bad Request",
+        "message": "No face detected in the provided image."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Sign Up Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint handles user sign-up. It supports the HTTP POST method and generates an authentication token. If the sign-up is successful, it returns the token for the frontend. If not, it returns a 400 error code.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/users/signup}
+    \item \textbf{Method:} \texttt{POST}
+  \end{itemize}
+
+  \item \textbf{Request Body:}
+  \begin{itemize}
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{username} (str): User's username.
+      \item \texttt{password} (str): User's password.
+      \item \texttt{email} (str): User's email address.
+      \item \texttt{phone\_number} (str): User's phone number.
+      \item \texttt{full\_name} (str): User's full name.
+      \item \texttt{date\_of\_birth} (str): User's date of birth.
+      \item \texttt{city} (str): User's city.
+      \item \texttt{country} (str): User's country.
+      \item \texttt{gender} (str): User's gender.
+      \item \texttt{address} (str): User's address.
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server creates a new user account. It generates an authentication token and returns the token for the frontend.
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{username} (str): User's username.
+      \item \texttt{token} (str): Authentication token for the signed-up user.
+    \end{itemize}
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "username": "john_doe",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzg5NTM5MDAsImlhdCI6MTYzODk1MzIwMH0.-ZqwOwVWZ-WfDv7FGV7SSpiky3m5vYx5Z2fvj0UeN9Hs"
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{400 Bad Request:}
+    \begin{itemize}
+      \item \textbf{Description:} The request is malformed, or the provided credentials (username or email) already exist.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Bad Request",
+        "message": "Invalid parameters in the request or user with the same username or email already exists."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Login Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint handles user login. It supports the HTTP POST method and validates and verifies the user's entered password. It returns success with the username and token if the login is successful; otherwise, it returns a 401 Unauthorized status.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/users/login}
+    \item \textbf{Method:} \texttt{POST}
+  \end{itemize}
+
+  \item \textbf{Request Body:}
+  \begin{itemize}
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{username} (str): User's username.
+      \item \texttt{password} (str): User's password.
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server validates and verifies the user's entered password. It returns success with the username and token if the login is successful.
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{data} (str): Greeting message.
+      \item \texttt{token} (str): Authentication token for the logged-in user.
+    \end{itemize}
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "data": "Hello, john_doe!",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2Mzg5NTM5MDAsImlhdCI6MTYzODk1MzIwMH0.-ZqwOwVWZ-WfDv7FGV7SSpiky3m5vYx5Z2vj0UeN9Hs"
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The provided credentials are invalid, or the user does not exist.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Invalid credentials."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Reset Password Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint sends an email to the user for resetting their password. It supports the HTTP POST method and generates a random password, sends it to the user's email, and updates the password in the database. It returns a 403 error if the user does not exist, a 401 error if the user does not have an email associated, and a 201 success status otherwise.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/users/reset\_password}
+    \item \textbf{Method:} \texttt{POST}
+  \end{itemize}
+
+  \item \textbf{Request Body:}
+  \begin{itemize}
+    \item \textbf{Data Types:}
+    \begin{itemize}
+      \item \texttt{username} (str): User's username.
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Successful Response (201 Created):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. An email with a generated password has been sent to the user, and the password in the database has been updated.
+    \item \textbf{Example:}
+    \begin{verbatim}
+    "Message Sent Successfully"
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{403 Forbidden:}
+    \begin{itemize}
+      \item \textbf{Description:} The user with the provided username does not exist.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Forbidden",
+        "message": "User not found."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The user does not have an associated email address.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "User does not have an email address."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Get Image Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint helps in uploading a user's photo. It supports the HTTP GET method and retrieves the specified image file from the server's "uploads" directory. If the file is found, it is sent as an attachment; otherwise, a 404 error is returned.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/uploads/<filename>}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+
+  \item \textbf{URL Parameters:}
+  \begin{itemize}
+    \item \textbf{filename} (str): The name of the image file to retrieve.
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful, and the server retrieves and sends the specified image file as an attachment.
+    \item \textbf{Data Types:} Binary data (image file).
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{404 Not Found:}
+    \begin{itemize}
+      \item \textbf{Description:} The specified image file was not found in the server's "uploads" directory.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Not Found",
+        "message": "Image file not found."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Edit Visitor Details Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint handles the edit visitor feature. It supports the HTTP POST method and is protected by user authentication. The endpoint allows the user to edit the information of a visitor, including their name, relationship, and image. The edited information is stored in the database, and the server returns a 401 error if the image is not provided or if no face is detected in the image. On success, it returns a 201 status.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/api/user/visitors/edit}
+    \item \textbf{Method:} \texttt{POST}
+  \end{itemize}
+
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with valid user credentials.
+  \end{itemize}
+
+  \item \textbf{Request Body:}
+  \begin{itemize}
+    \item \textbf{Form Data:}
+    \begin{itemize}
+      \item \texttt{name} (str): Visitor's name.
+      \item \texttt{relation} (str): Relationship to the user.
+      \item \texttt{id} (str): Visitor's ID.
+      \item \texttt{image} (file): Image file of the visitor.
+    \end{itemize}
+  \end{itemize}
+
+  \item \textbf{Successful Response (201 Created):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The information of the visitor has been edited, and the changes are stored in the database.
+    \item \textbf{Example:}
+    \begin{verbatim}
+    "Visitor edited successfully"
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The user is not authenticated or authorized to access the endpoint.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Authentication required."
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{400 Bad Request:}
+    \begin{itemize}
+      \item \textbf{Description:} The image is not provided, or no face is detected in the image.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Bad Request",
+        "message": "No face detected in the provided image."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Delete Visitor Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint handles the delete visitor feature. It supports the HTTP DELETE method and is protected by user authentication. The endpoint allows the user to delete a visitor by providing the visitor's ID. The visitor's information is removed from the database, and the server returns a 201 status on success.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/user/visitors/delete/<id>}
+    \item \textbf{Method:} \texttt{DELETE}
+  \end{itemize}
+
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with valid user credentials.
+  \end{itemize}
+
+  \item \textbf{URL Parameters:}
+  \begin{itemize}
+    \item \textbf{id} (int): The ID of the visitor to be deleted.
+  \end{itemize}
+
+  \item \textbf{Successful Response (201 Created):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The information of the specified visitor has been deleted from the database.
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {"message": "Visitor deleted successfully"}
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The user is not authenticated or authorized to access the endpoint.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Authentication required."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Saving Settings Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint handles the settings page where a user can save changes to their user details. It supports both the HTTP GET and POST methods and is protected by token authentication. The endpoint allows the user to update various user details, such as username, password hash, email, phone number, full name, city, and address. The changes are saved in the database, and the server returns a 201 status on success.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/change\_data}
+    \item \textbf{Methods:} \texttt{GET, POST}
+  \end{itemize}
+
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with a valid token.
+  \end{itemize}
+
+  \item \textbf{Request Body (POST Method):}
+  \begin{itemize}
+    \item \texttt{username} (str): New username for the user.
+    \item \texttt{passhash} (str): New password hash for the user.
+    \item \texttt{email} (str): New email address for the user.
+    \item \texttt{number} (str): New phone number for the user.
+    \item \texttt{full\_name} (str): New full name for the user.
+    \item \texttt{city} (str): New city for the user.
+    \item \texttt{address} (str): New address for the user.
+  \end{itemize}
+
+  \item \textbf{Successful Response (201 Created):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The user details have been updated and saved in the database.
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {"message": "User data updated successfully"}
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The provided token is invalid or missing.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Token authentication required."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Retrieving User's details as Placeholder for Settings Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint serves as a placeholder when a user first enters the settings page. It supports the HTTP GET method and is protected by token authentication. The endpoint retrieves and returns the user's already signed-up details as a JSON response.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/settings}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+
+  \item \textbf{Authentication:}
+  \begin{itemize}
+    \item \texttt{Authorization} header required with a valid token.
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The user's already signed-up details are retrieved and returned in a JSON format.
+    \item \textbf{Data Types:} JSON object
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "username": "john_doe",
+      "passhash": "hashed_password",
+      "email": "john.doe@example.com",
+      "phone_number": "+1234567890",
+      "full_name": "John Doe",
+      "date_of_birth": "1990-01-01",
+      "city": "City",
+      "country": "Country",
+      "gender": "Male"
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{404 Not Found:}
+    \begin{itemize}
+      \item \textbf{Description:} The user data could not be loaded.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "failed to load user data"
+      }
+      \end{verbatim}
+    \end{itemize}
+
+    \item \textbf{401 Unauthorized:}
+    \begin{itemize}
+      \item \textbf{Description:} The provided token is invalid or missing.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "Unauthorized",
+        "message": "Token authentication required."
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Getting Visitors' History Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint returns the user's visitor history. It supports the HTTP GET method and takes the user's ID as a parameter. The endpoint retrieves and returns the visitor history of the specified user as a JSON response.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/history/<user\_id>}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+
+  \item \textbf{URL Parameters:}
+  \begin{itemize}
+    \item \textbf{user\_id} (int): The ID of the user whose visitor history is to be retrieved.
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The user's visitor history is retrieved and returned as a JSON array.
+    \item \textbf{Data Types:} JSON object
+    \item \textbf{Example:}
+    \begin{verbatim}
+    {
+      "visitors": [
+        {
+          "id": 1,
+          "name": "Visitor 1",
+          "relationship": "Friend",
+          "embedding": "embedding_data_1",
+          "last_visited": "2023-01-01 12:00:00"
+        },
+        {
+          "id": 2,
+          "name": "Visitor 2",
+          "relationship": "Family",
+          "embedding": "embedding_data_2",
+          "last_visited": "2023-01-02 10:30:00"
+        }
+      ]
+    }
+    \end{verbatim}
+  \end{itemize}
+
+  \item \textbf{Error Responses:}
+  \begin{itemize}
+    \item \textbf{404 Not Found:}
+    \begin{itemize}
+      \item \textbf{Description:} The specified user is not found.
+      \item \textbf{Example:}
+      \begin{verbatim}
+      {
+        "error": "User not found"
+      }
+      \end{verbatim}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+\subsection{Livestream Video Feed Endpoint}
+
+\begin{enumerate}
+  \item \textbf{API Description:} This API endpoint serves the live stream video feed. It supports the HTTP GET method and takes the user's ID as a parameter. The endpoint returns a continuous stream of video frames as a multipart response.
+
+  \item \textbf{Endpoint Details:}
+  \begin{itemize}
+    \item \textbf{URL:} \texttt{/video/<user\_id>}
+    \item \textbf{Method:} \texttt{GET}
+  \end{itemize}
+
+  \item \textbf{URL Parameters:}
+  \begin{itemize}
+    \item \textbf{user\_id} (int): The ID of the user for whom the live stream video feed is requested.
+  \end{itemize}
+
+  \item \textbf{Successful Response (200 OK):}
+  \begin{itemize}
+    \item \textbf{Description:} The request was successful. The server returns a continuous stream of video frames in a multipart response.
+    \item \textbf{Data Types:} Multipart response
+    \item \textbf{Example:} (No example provided due to the nature of video stream response)
+  \end{itemize}
+\end{enumerate}
+\end{document}
